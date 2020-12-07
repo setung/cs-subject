@@ -1,7 +1,7 @@
-﻿#include <iostream>
+﻿#include "step_1.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    cout << step_1();
 }
 
