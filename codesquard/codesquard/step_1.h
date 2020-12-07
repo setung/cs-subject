@@ -24,13 +24,24 @@ void input(string& str, int& n, char& direction) {
 	}
 }
 string goLeft(string& str, int n) {
+	/*
 	for (int i = 0; i < n; i++)
 		str = str.substr(1, str.size() - 1) + str.front();
+	*/
+
+	n %= str.size();
+	str = str.substr(n, str.size()-n) + str.substr(0, n);
+
 	return str;
 }
 string goRight(string& str, int n) {
+	/*
 	for (int i = 0; i < n; i++)
 		str = str.back() + str.substr(0, str.size() - 1);
+	*/
+
+	n %= str.size();
+	str = str.substr(str.size()-n, n) + str.substr(0, str.size() - n);
 
 	return str;
 }

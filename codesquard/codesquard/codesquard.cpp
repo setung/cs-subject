@@ -2,6 +2,7 @@
 
 int main()
 {
-    cout << step_1();
+    while(true)
+        cout << step_1() << '\n';
 }
 
