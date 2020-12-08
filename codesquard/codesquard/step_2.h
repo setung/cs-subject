@@ -101,7 +101,7 @@ private :
 		}
 	}
 
-	void doOp(string op) {
+	bool doOp(string op) {
 		if (op == "R") cube.moveR(0);
 		else if(op=="R\'") cube.moveR(1);
 		else if (op == "U") cube.moveU(0);
@@ -110,10 +110,14 @@ private :
 		else if (op == "L\'") cube.moveL(1);
 		else if (op == "B") cube.moveB(0);
 		else if (op == "B\'") cube.moveB(1);
-		else if(op=="Q"){
+		else if (op == "Q") {
 			cout << "Bye~\n";
 			exit(1);
 		}
+		else
+			return false;
+
+		return true;
 	}
 
 	void printCube() {
@@ -128,9 +132,10 @@ public :
 			getOp();
 
 			while (!ops.empty()) {
-				doOp(ops.front());
-				cout<<'\n' << ops.front() << '\n';
-				printCube();
+				if (doOp(ops.front())) {
+					cout<<'\n' << ops.front() << '\n';
+					printCube();
+				}
 				ops.pop();
 			}
 		}

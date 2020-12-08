@@ -6,6 +6,7 @@ C++
 2단계: 평면 큐브 구현하기
 
 class Cube 
+
 	데이터
 	- vector<deque<int>> arr  큐브 배열
 
@@ -17,6 +18,7 @@ class Cube
    - printArr()            배열 출력
 
 class CubeManagement 
+
    데이터
    - Cube cube             큐브 
    - queue<string> ops     명령어 모음 큐
