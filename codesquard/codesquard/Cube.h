@@ -33,12 +33,8 @@ public:
 
 	void test() {
 		printCube();
-		cout << isFitted() << '\n';
-		rotateR(0, 1);
-		cout << isFitted() << '\n';
-		rotateL(1, 1);
+		mixCube();
 		printCube();
-		cout << isFitted() << '\n';
 	}
 
 	void rotateF(bool reverse, int n) {
@@ -308,6 +304,17 @@ public:
 	}
 
 	void mixCube() {
-
+		random_device rd;
+		mt19937 gen(rd());
+		uniform_int_distribution<int> dis(1, 10);
+		
+		for (int i = 0; i < 6; i++) {
+			rotateF(0, dis(gen));
+			rotateR(0, dis(gen));
+			rotateU(0, dis(gen));
+			rotateB(0, dis(gen));
+			rotateL(0, dis(gen));
+			rotateD(0, dis(gen));
+		}
 	}
 };
