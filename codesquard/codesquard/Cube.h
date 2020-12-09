@@ -33,9 +33,12 @@ public:
 
 	void test() {
 		printCube();
+		cout << isFitted() << '\n';
 		rotateR(0, 1);
+		cout << isFitted() << '\n';
 		rotateL(1, 1);
 		printCube();
+		cout << isFitted() << '\n';
 	}
 
 	void rotateF(bool reverse, int n) {
@@ -289,6 +292,18 @@ public:
 	}
 
 	bool isFitted() {
+		for (int i = 0; i < 3; i++) {
+			for (int j = 1; j < 3; j++) {
+				if (cube_F[i][j - 1] != cube_F[i][j] ||
+					cube_R[i][j - 1] != cube_R[i][j] ||
+					cube_U[i][j - 1] != cube_U[i][j] ||
+					cube_B[i][j - 1] != cube_B[i][j] ||
+					cube_L[i][j - 1] != cube_L[i][j] ||
+					cube_D[i][j - 1] != cube_D[i][j] )
+					return false;
+			}
+		}
+
 		return true;
 	}
 
