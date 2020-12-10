@@ -1,8 +1,9 @@
 ﻿#include <iostream>
 #include "Cube.h"
+#include "CubeManager.h"
 int main()
 {
-	Cube c;
-	c.test();
+	CubeManager cm;
+	cm.test();
 }
 

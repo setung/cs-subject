@@ -4,5 +4,6 @@
 #include <string>
 #include <queue>
 #include <random>
-#include<tuple>
+#include <tuple>
+#include "Cube.h"  
 using namespace std;
