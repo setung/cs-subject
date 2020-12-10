@@ -1,11 +1,12 @@
 #pragma once
 #include "header.h"
 #include "Cube.h"
+#include <time.h>
 class CubeManager {
 	Cube cube;
 	int ExecutedOp_count = 0;
 	deque<pair<string, int>> ops;	// <¸í·É¾î, È½¼ö>
-
+	clock_t startTime;
 public:
 
 	void getOps() {
@@ -60,9 +61,10 @@ public:
 	}
 
 	void start() {
+		startTime = clock();
 		cube.mixCube();
 		printCube();
-		
+	
 		while (true) {
 			getOps();
 			doOp();
@@ -79,12 +81,23 @@ public:
 		return false;
 	}
 	void end() {
-		cout << "°æ°ú ½Ã°£ :  00:00\n";
+		cout << "°æ°ú ½Ã°£ :  " << getPlayTime() << '\n';
 		cout << "Á¶ÀÛ °¹¼ö : " << ExecutedOp_count << '\n';
 		cout << "ÀÌ¿ëÇØ ÁÖ¼Å¼­ °¨»çÇÕ´Ï´Ù. ¶Ñ¶Ñ¶Ñ.\n";
 
 		exit(0);
 	}
 
+	string getPlayTime() {
+		int result = (int)(clock() - startTime)/1000;
+		int m = result / 60;
+		int s = result % 60;
+
+		string str = m < 10 ? "0" + to_string(m) : to_string(m);
+		str += ":";
+		str += s < 10 ? "0" + to_string(s) : to_string(s);
+
+		return (str);
+	}
 
 };
