@@ -11,6 +11,7 @@ public:
 
 	void getOps() {
 		string readOps;
+		cout << "CUBE> ";
 		cin >> readOps;
 		string op = "";
 		for (int i = 0; i < readOps.size(); i++) {
@@ -33,6 +34,7 @@ public:
 			int op_cnt = ops.front().second;
 			ops.pop_front();
 			ExecutedOp_count++;
+			cout << op << '\n';
 
 			if (op != "Q") {
 				if (op == "F") { cube.rotateF(0, op_cnt); }
@@ -62,7 +64,7 @@ public:
 
 	void start() {
 		startTime = clock();
-		cube.mixCube();
+		//cube.mixCube();
 		printCube();
 	
 		while (true) {
@@ -70,7 +72,6 @@ public:
 			doOp();
 		}
 	}
-
 
 	bool checkCube() {
 		if (cube.isFitted()) {
@@ -80,6 +81,7 @@ public:
 
 		return false;
 	}
+
 	void end() {
 		cout << "경과 시간 :  " << getPlayTime() << '\n';
 		cout << "조작 갯수 : " << ExecutedOp_count << '\n';
