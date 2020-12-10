@@ -1,15 +1,12 @@
 #pragma once
 #include "header.h"
-
+#include "Cube.h"
 class CubeManager {
 	Cube cube;
 	int ExecutedOp_count = 0;
 	deque<pair<string, int>> ops;	// <명령어, 횟수>
 
-public : 
-	void test() {
-		getOps();
-	}
+public:
 
 	void getOps() {
 		string readOps;
@@ -24,7 +21,7 @@ public :
 			}
 			else {
 				op = readOps[i];
-				ops.push_back({op,1 });
+				ops.push_back({ op,1 });
 			}
 		}
 	}
@@ -36,22 +33,23 @@ public :
 			ops.pop_front();
 			ExecutedOp_count++;
 
-			if (op == "F") cube.rotateF(0, op_cnt);
-			else if (op == "R") cube.rotateR(0, op_cnt);
-			else if (op == "U") cube.rotateU(0, op_cnt);
-			else if (op == "B") cube.rotateB(0, op_cnt);
-			else if (op == "L") cube.rotateL(0, op_cnt);
-			else if (op == "D") cube.rotateD(0, op_cnt);
-			else if (op == "F'") cube.rotateF(1, op_cnt);
-			else if (op == "R'") cube.rotateR(1, op_cnt);
-			else if (op == "U'") cube.rotateU(1, op_cnt);
-			else if (op == "B'") cube.rotateB(1, op_cnt);
-			else if (op == "L'") cube.rotateL(1, op_cnt);
-			else if (op == "D'") cube.rotateD(1, op_cnt);
-			else if (op == "Q") end();
-
-			if (cube.isFitted()) {
-				cout << "축하합니다. 정답입니다.\n";
+			if (op != "Q") {
+				if (op == "F") { cube.rotateF(0, op_cnt); }
+				else if (op == "R") { cube.rotateR(0, op_cnt); }
+				else if (op == "U") { cube.rotateU(0, op_cnt); }
+				else if (op == "B") { cube.rotateB(0, op_cnt); }
+				else if (op == "L") { cube.rotateL(0, op_cnt); }
+				else if (op == "D") { cube.rotateD(0, op_cnt); }
+				else if (op == "F'") { cube.rotateF(1, op_cnt); }
+				else if (op == "R'") { cube.rotateR(1, op_cnt); }
+				else if (op == "U'") { cube.rotateU(1, op_cnt); }
+				else if (op == "B'") { cube.rotateB(1, op_cnt); }
+				else if (op == "L'") { cube.rotateL(1, op_cnt); }
+				else if (op == "D'") { cube.rotateD(1, op_cnt); }
+				printCube();
+				checkCube();
+			}
+			else {
 				end();
 			}
 		}
@@ -62,11 +60,30 @@ public :
 	}
 
 	void start() {
-
+		cube.mixCube();
+		printCube();
+		
+		while (true) {
+			getOps();
+			doOp();
+		}
 	}
 
-	void end() {
 
+	bool checkCube() {
+		if (cube.isFitted()) {
+			cout << "축하합니다. 정답입니다. \n";
+			end();
+		}
+
+		return false;
+	}
+	void end() {
+		cout << "경과 시간 :  00:00\n";
+		cout << "조작 갯수 : " << ExecutedOp_count << '\n';
+		cout << "이용해 주셔서 감사합니다. 뚜뚜뚜.\n";
+
+		exit(0);
 	}
 
 

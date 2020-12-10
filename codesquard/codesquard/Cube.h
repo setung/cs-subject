@@ -31,12 +31,6 @@ public:
 		cube_A.push_back(&cube_D);
 	}
 
-	void test() {
-		printCube();
-		mixCube();
-		printCube();
-	}
-
 	void rotateF(bool reverse, int n) {
 		for (int i = 0; i < n; i++) {
 			if (!reverse) {
@@ -293,15 +287,15 @@ public:
 				if (cube_F[i][j - 1] != cube_F[i][j] ||
 					cube_F[j-1][i] != cube_F[j][i] ||
 					cube_R[i][j - 1] != cube_R[i][j] ||
-					cube_F[j - 1][i] != cube_F[j][i] ||
+					cube_R[j - 1][i] != cube_R[j][i] ||
 					cube_U[i][j - 1] != cube_U[i][j] ||
-					cube_F[j - 1][i] != cube_F[j][i] ||
+					cube_U[j - 1][i] != cube_U[j][i] ||
 					cube_B[i][j - 1] != cube_B[i][j] ||
-					cube_F[j - 1][i] != cube_F[j][i] ||
+					cube_B[j - 1][i] != cube_B[j][i] ||
 					cube_L[i][j - 1] != cube_L[i][j] ||
-					cube_F[j - 1][i] != cube_F[j][i] ||
+					cube_L[j - 1][i] != cube_L[j][i] ||
 					cube_D[i][j - 1] != cube_D[i][j] ||
-					cube_F[j - 1][i] != cube_F[j][i] )
+					cube_D[j - 1][i] != cube_D[j][i] )
 					return false;
 			}
 		}

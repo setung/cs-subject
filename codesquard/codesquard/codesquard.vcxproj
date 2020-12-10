@@ -145,8 +145,6 @@
     <ClInclude Include="Cube.h" />
     <ClInclude Include="CubeManager.h" />
     <ClInclude Include="header.h" />
-    <ClInclude Include="step_3.h" />
-    <ClInclude Include="Timer.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\README.md" />
