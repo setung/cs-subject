@@ -142,7 +142,8 @@
     <ClCompile Include="codesquard.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="step_2.h" />
+    <ClInclude Include="Cube.h" />
+    <ClInclude Include="CubeManager.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\README.md" />

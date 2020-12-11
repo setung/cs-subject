@@ -11,13 +11,11 @@ class Cube
 	- vector<deque<int>> arr  큐브 배열
 
 	함수
-   - moveU(bool reverse)   bool 값에 따라 가장 윗줄을 오른쪽이나 왼쪽으로 회전
-   - moveR(bool reverse)   bool 값에 따라 가장 오른쪽 줄을 위나 아래로 회전
-   - moveL(bool reverse)   bool 값에 따라 가장 왼쪽 줄을 위나 아래로 회전
-   - moveB(bool reverse)   bool 값에 따라 가장 아랫줄을 오른쪽이나 왼쪽으로 회전
+   - void moveCol(int n, bool clockDirection)  n 번째 열을 clockDirection 방향으로 회전
+   - void moveRow(int n, bool clockDirection)  n 번째 행을 clockDirection 방향으로 회전
    - printArr()            배열 출력
 
-class CubeManagement 
+class CubeManager
 
    데이터
    - Cube cube             큐브 

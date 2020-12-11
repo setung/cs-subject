@@ -1,8 +1,8 @@
-﻿#include "step_2.h"
+﻿#include "CubeManager.h"
 
 int main()
 {
-	CubeManagement cm;
+	CubeManager cm;
 	cm.start();
 }
 
