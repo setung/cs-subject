@@ -70,7 +70,7 @@ public:
 
 	void start() {
 		startTime = clock();
-		//cube.mixCube();
+		cube.mixCube();
 		printCube();
 	
 		while (true) {

@@ -134,62 +134,37 @@ public:
 
 	void printCube() {
 		for (auto arr : cube_U) {
-			for (char c : arr)
-				cout << c << ' ';
+			cout << "\t\t";
+			for (char c : arr) cout << c << ' ';
 			cout << '\n';
 		}
 		cout << "\n";
 
-		for (int i = 0; i < 3; i++)
-			cout << cube_L[0][i] << ' ';
-		cout << "   ";
-		for (int i = 0; i < 3; i++)
-			cout << cube_F[0][i] << ' ';
-		cout << "   ";
-		for (int i = 0; i < 3; i++)
-			cout << cube_R[0][i] << ' ';
-		cout << "   ";
-		for (int i = 0; i < 3; i++)
-			cout << cube_B[0][i] << ' ';
-		cout << '\n';
-		for (int i = 0; i < 3; i++)
-			cout << cube_L[1][i] << ' ';
-		cout << "   ";
-		for (int i = 0; i < 3; i++)
-			cout << cube_F[1][i] << ' ';
-		cout << "   ";
-		for (int i = 0; i < 3; i++)
-			cout << cube_R[1][i] << ' ';
-		cout << "   ";
-		for (int i = 0; i < 3; i++)
-			cout << cube_B[1][i] << ' ';
-		cout << '\n';
-		for (int i = 0; i < 3; i++)
-			cout << cube_L[2][i] << ' ';
-		cout << "   ";
-		for (int i = 0; i < 3; i++)
-			cout << cube_F[2][i] << ' ';
-		cout << "   ";
-		for (int i = 0; i < 3; i++)
-			cout << cube_R[2][i] << ' ';
-		cout << "   ";
-		for (int i = 0; i < 3; i++)
-			cout << cube_B[2][i] << ' ';
-		cout << "\n\n";
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 12; j++) {
+				if(j<3) cout << cube_L[i][j % 3] << ' ';
+				else if(j<6) cout << cube_F[i][j%3] << ' ';
+				else if(j<9) cout << cube_R[i][j % 3] << ' ';
+				else cout << cube_B[i][j % 3] << ' ';
+				if(j %3 ==2) cout << "     ";
+			}
+			cout << '\n';
+		}
+			cout << '\n';
+
 		for (auto arr : cube_D) {
-			for (char c : arr)
-				cout << c << ' ';
+			cout << "\t\t";
+			for (char c : arr) cout << c << ' ';
 			cout << '\n';
 		}
 		cout << "\n\n";
-
 	}
 
 	bool isFitted() {
 		for (int i = 0; i < 3; i++) {
 			for (int j = 1; j < 3; j++) {
 				if (cube_F[i][j - 1] != cube_F[i][j] ||
-					cube_F[j-1][i] != cube_F[j][i] ||
+					cube_F[j - 1][i] != cube_F[j][i] ||
 					cube_R[i][j - 1] != cube_R[i][j] ||
 					cube_R[j - 1][i] != cube_R[j][i] ||
 					cube_U[i][j - 1] != cube_U[i][j] ||
@@ -199,11 +174,10 @@ public:
 					cube_L[i][j - 1] != cube_L[i][j] ||
 					cube_L[j - 1][i] != cube_L[j][i] ||
 					cube_D[i][j - 1] != cube_D[i][j] ||
-					cube_D[j - 1][i] != cube_D[j][i] )
+					cube_D[j - 1][i] != cube_D[j][i])
 					return false;
 			}
 		}
-
 		return true;
 	}
 
@@ -211,7 +185,7 @@ public:
 		random_device rd;
 		mt19937 gen(rd());
 		uniform_int_distribution<int> dis(1, 10);
-		
+
 		for (int i = 0; i < 6; i++) {
 			rotateFB(2, dis(gen));
 			rotateLR_reverse(2, dis(gen));
