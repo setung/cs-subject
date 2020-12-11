@@ -28,33 +28,39 @@ public:
 		}
 	}
 
-	void doOp() {
+	void executeOp() {
 		while (!ops.empty()) {
 			string op = ops.front().first;
 			int op_cnt = ops.front().second;
 			ops.pop_front();
 			ExecutedOp_count++;
-			cout << op << '\n';
+			cout << op;
+			if (op_cnt > 1) cout << op_cnt << '\n';
+			else cout << '\n';
+		
+			doOp(op,op_cnt);
+		}
+	}
 
-			if (op != "Q") {
-				if (op == "F") { cube.rotateF(0, op_cnt); }
-				else if (op == "R") { cube.rotateR(0, op_cnt); }
-				else if (op == "U") { cube.rotateU(0, op_cnt); }
-				else if (op == "B") { cube.rotateB(0, op_cnt); }
-				else if (op == "L") { cube.rotateL(0, op_cnt); }
-				else if (op == "D") { cube.rotateD(0, op_cnt); }
-				else if (op == "F'") { cube.rotateF(1, op_cnt); }
-				else if (op == "R'") { cube.rotateR(1, op_cnt); }
-				else if (op == "U'") { cube.rotateU(1, op_cnt); }
-				else if (op == "B'") { cube.rotateB(1, op_cnt); }
-				else if (op == "L'") { cube.rotateL(1, op_cnt); }
-				else if (op == "D'") { cube.rotateD(1, op_cnt); }
-				printCube();
-				checkCube();
-			}
-			else {
-				end();
-			}
+	void doOp(string op, int op_cnt) {
+		if (op != "Q") {
+			if (op == "F") { cube.rotateFB(2, op_cnt); }
+			else if (op == "R") { cube.rotateLR_reverse(2, op_cnt); }
+			else if (op == "U") { cube.rotateUD(0, op_cnt); }
+			else if (op == "B") { cube.rotateFB_reverse(0, op_cnt); }
+			else if (op == "L") { cube.rotateLR(0, op_cnt); }
+			else if (op == "D") { cube.rotateUD_reverse(2, op_cnt); }
+			else if (op == "F'") { cube.rotateFB_reverse(2, op_cnt); }
+			else if (op == "R'") { cube.rotateLR(2, op_cnt); }
+			else if (op == "U'") { cube.rotateUD_reverse(0, op_cnt); }
+			else if (op == "B'") { cube.rotateFB(0, op_cnt); }
+			else if (op == "L'") { cube.rotateLR_reverse(0, op_cnt); }
+			else if (op == "D'") { cube.rotateUD(2, op_cnt); }
+			printCube();
+			checkCube();
+		}
+		else {
+			end();
 		}
 	}
 
@@ -69,7 +75,7 @@ public:
 	
 		while (true) {
 			getOps();
-			doOp();
+			executeOp();
 		}
 	}
 
