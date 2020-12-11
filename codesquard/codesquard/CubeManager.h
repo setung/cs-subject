@@ -7,7 +7,6 @@ class CubeManager {
 	int ExecutedOp_count = 0;
 	deque<pair<string, int>> ops;	// <명령어, 횟수>
 	clock_t startTime;
-public:
 
 	void getOps() {
 		string readOps;
@@ -68,17 +67,6 @@ public:
 		cube.printCube();
 	}
 
-	void start() {
-		startTime = clock();
-		cube.mixCube();
-		printCube();
-	
-		while (true) {
-			getOps();
-			executeOp();
-		}
-	}
-
 	bool checkCube() {
 		if (cube.isFitted()) {
 			cout << "축하합니다. 정답입니다. \n";
@@ -107,5 +95,15 @@ public:
 
 		return (str);
 	}
-
+public:
+	void start() {
+		startTime = clock();
+		cube.mixCube();
+		printCube();
+	
+		while (true) {
+			getOps();
+			executeOp();
+		}
+	}
 };
